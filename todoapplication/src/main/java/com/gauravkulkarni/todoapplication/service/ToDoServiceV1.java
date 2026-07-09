@@ -1,0 +1,35 @@
+package com.gauravkulkarni.todoapplication.service;
+
+import com.gauravkulkarni.todoapplication.entity.Todo;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class ToDoServiceV1 {
+    private static List<Todo> todos = new ArrayList();
+
+    static {
+        todos.add(new Todo(1, "admin", "Analyze Real Madrid vs Barcelona tactical setup", LocalDate.now(), LocalDate.now().plusDays(1), false));
+        todos.add(new Todo(2, "admin", "Complete Spring Boot authentication module", LocalDate.now(), LocalDate.now().plusDays(3), false));
+        todos.add(new Todo(3, "admin", "Prepare for cloud architecture certification", LocalDate.now(), LocalDate.now().plusMonths(1), false));
+        todos.add(new Todo(4, "admin", "Review database schema optimization techniques", LocalDate.now(), LocalDate.now().plusDays(2), true));
+        todos.add(new Todo(5, "admin", "Watch Premier League highlights", LocalDate.now(), LocalDate.now(), false));
+        todos.add(new Todo(6, "admin", "Learn Kubernetes deployment strategies", LocalDate.now(), LocalDate.now().plusDays(5), false));
+        todos.add(new Todo(7, "admin", "Update professional resume and LinkedIn profile", LocalDate.now(), LocalDate.now().plusDays(7), false));
+        todos.add(new Todo(8, "admin", "Study historical football manager tactics", LocalDate.now(), LocalDate.now().plusDays(4), false));
+        todos.add(new Todo(9, "admin", "Refactor existing monolith to microservices", LocalDate.now(), LocalDate.now().plusWeeks(2), false));
+        todos.add(new Todo(10, "admin", "Network with industry peers on new IT trends", LocalDate.now(), LocalDate.now().plusDays(10), false));
+        todos.add(new Todo(11, "admin", "Analyze Champions League group standing", LocalDate.now(), LocalDate.now().plusDays(2), false));
+        todos.add(new Todo(12, "admin", "Master Spring Security filters", LocalDate.now(), LocalDate.now().plusDays(6), false));
+        todos.add(new Todo(13, "admin", "Research remote work career growth paths", LocalDate.now(), LocalDate.now().plusDays(8), false));
+        todos.add(new Todo(14, "admin", "Practice Goalkeeping drills at the pitch", LocalDate.now(), LocalDate.now().plusDays(3), false));
+        todos.add(new Todo(15, "admin", "Debug production environment performance issues", LocalDate.now(), LocalDate.now().plusDays(1), true));
+    }
+
+    public List<Todo> findAll(){
+        return todos;
+    }
+}
