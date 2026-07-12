@@ -3,13 +3,13 @@ package com.gauravkulkarni.todoapplication.controller;
 import com.gauravkulkarni.todoapplication.entity.Todo;
 import com.gauravkulkarni.todoapplication.service.ToDoServiceV1;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 public class ToDoController {
     @Autowired
@@ -18,5 +18,16 @@ public class ToDoController {
     @RequestMapping(method = RequestMethod.GET , path = "/users/{username}/todos")
     public List<Todo> getAllTodos(@PathVariable String username){
         return toDoServiceV1.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE,path="/users/{username}/todos/{todoId}")
+    public ResponseEntity<Void> deleteTodoDetails(@PathVariable String username , @PathVariable String todoId){
+        Todo tododetails = toDoServiceV1.deleteTodoById(Long.parseLong(todoId));
+        System.out.println("TODO DEAILS : " + tododetails);
+        if(tododetails!=null){
+            return ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 }

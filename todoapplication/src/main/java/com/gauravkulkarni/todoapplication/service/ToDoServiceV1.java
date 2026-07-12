@@ -32,4 +32,31 @@ public class ToDoServiceV1 {
     public List<Todo> findAll(){
         return todos;
     }
+
+    public Todo findTodoById(long todoId) {
+        for(Todo todo:todos){
+            if (todo.getTodoId() == todoId) {
+                System.out.println("TODO DETAILS  : " + todo);
+                return todo;
+            }
+        }
+        System.out.println("404 TOTO");
+        return null;
+    }
+
+    public Todo deleteTodoById(long todoId){
+        System.out.println("Long TODO Id : " + todoId);
+        Todo todoDetails = findTodoById(todoId);
+        if (todoDetails == null){
+            System.out.println("404 TODO Delete Method");
+            return null;
+        }
+        if(todos.remove(todoDetails)){
+            return todoDetails;
+        }else{
+            return null;
+        }
+    }
+
+
 }

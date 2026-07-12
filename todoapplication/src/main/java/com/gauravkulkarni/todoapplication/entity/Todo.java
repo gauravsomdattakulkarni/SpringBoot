@@ -3,6 +3,7 @@ package com.gauravkulkarni.todoapplication.entity;
 import jakarta.persistence.Entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Todo {
     private long todoId;
@@ -82,5 +83,18 @@ public class Todo {
                 ", targetDate=" + targetDate +
                 ", isDone=" + isDone +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Todo todo = (Todo) o;
+        return todoId == todo.todoId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(todoId);
     }
 }
