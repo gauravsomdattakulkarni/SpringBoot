@@ -30,4 +30,9 @@ public class ToDoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET , path = "/users/{username}/todos/{todoId}")
+    public Todo getTodoDetails(@PathVariable String username , @PathVariable Long todoId){
+        return toDoServiceV1.findTodoById(todoId);
+    }
 }
