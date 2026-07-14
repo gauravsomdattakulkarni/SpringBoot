@@ -58,5 +58,14 @@ public class ToDoServiceV1 {
         }
     }
 
-
+    public Todo saveTodoDetails(Todo todoData){
+        if(todoData.getTodoId()==-1){
+            todoData.setTodoId(todos.get(todos.size() - 1).getTodoId() + 1);
+            todos.add(todoData);
+        }else{
+            deleteTodoById(todoData.getTodoId());
+            todos.add(todoData);
+        }
+        return todoData;
+    }
 }
