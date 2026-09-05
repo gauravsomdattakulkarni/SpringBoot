@@ -59,7 +59,7 @@ public class ToDoServiceV1 {
     }
 
     public Todo saveTodoDetails(Todo todoData){
-        if(todoData.getTodoId()==-1){
+        if(todoData.getTodoId()==-1 || todoData.getTodoId()==0){
             todoData.setTodoId(todos.get(todos.size() - 1).getTodoId() + 1);
             todos.add(todoData);
         }else{

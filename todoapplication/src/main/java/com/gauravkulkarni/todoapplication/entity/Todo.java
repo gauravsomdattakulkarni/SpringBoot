@@ -11,7 +11,7 @@ public class Todo {
     private String description;
     private LocalDate addedDate;
     private LocalDate targetDate;
-    private boolean isDone;
+    private Boolean isDone = false;
 
     public Todo() {
     }
@@ -65,11 +65,11 @@ public class Todo {
         this.targetDate = targetDate;
     }
 
-    public boolean isDone() {
+    public Boolean isDone() {
         return isDone;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(Boolean done) {
         isDone = done;
     }
 
